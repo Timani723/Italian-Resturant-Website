@@ -1,0 +1,714 @@
+/* Root variables for consistent colors and values throughout the website */
+:root {
+  --black: #f5f5f5;      /* Light gray background color */
+  --wine: #8B0000;       /* Red color for buttons and important text */
+  --beige: #FFDAB9;      /* Light beige color for backgrounds */
+  --light-color: #333333; /* Dark gray color for regular text */
+  --box-shadow: 0.5rem  1.5rem rgba(0, 0, 0, .1); /* Shadow effect for boxes */
+}
+
+/* Reset default styles and set base styles for all elements */
+* {
+  font-family: 'Poppins' , sans-serif; /* Use Poppins font for all text */
+  margin: 0;                           /* Remove default margin */
+  padding: 0;                          /* Remove default padding */
+  box-sizing: border-box;              /* Include padding in width calculations */
+  outline: none;                       /* Remove outline when clicking elements */
+  text-decoration: none;               /* Remove underlines from links */
+  border: none;                        /* Remove default borders */
+  text-transform: capitalize;          /* Make first letter of text capital */
+  transition: all .2s linear;          /* Smooth animation for all changes */
+}
+
+/* Base settings for the entire webpage */
+html {
+  font-size: 62.5%;                    /* Make 1rem = 10px for easier math */
+  overflow-x: hidden;                  /* Hide horizontal scrollbar */
+  scroll-padding-top: 5.5rem;          /* Space for fixed header when scrolling */
+  scroll-behavior: smooth;             /* Smooth scrolling when clicking links */
+  background-color: var(--black);      /* Set light background */
+}
+
+/* Body background color */
+body {
+  background-color: var(--black);      /* Set light background */
+  overflow-x: hidden;                  /* Hide horizontal scrollbar */
+  position: relative;                  /* For proper overflow handling */
+  width: 100%;                         /* Full width */
+}
+
+/* Common section styling */
+section {
+  padding: 2rem 7%;                    /* Add space around sections */
+  background-color: var(--black);      /* Set dark background */
+}
+
+/* Button styling */
+.btn {
+  display: inline-block;               /* Make button behave like a block but stay inline */
+  margin-top: 1rem;                    /* Space above button */
+  font-size: 1.7rem;                   /* Button text size */
+  color: #fff;                         /* White text */
+  background: var(--wine);             /* Red background */
+  border-radius: 0.5rem;               /* Rounded corners */
+  cursor: pointer;                     /* Show hand cursor on hover */
+  padding: 1rem 3rem;                  /* Space inside button */
+}
+
+/* Button hover effect */
+.btn:hover {
+  background: var(--beige);            /* Change to beige on hover */
+  color: var(--wine);                  /* Change text to red on hover */
+}
+
+/* Header (top navigation bar) styling */
+header {
+  position: fixed;                     /* Keep header at top of screen */
+  top: 0;                             /* Stick to top */
+  left: 0;                            /* Start from left edge */
+  right: 0;                           /* Extend to right edge */
+  padding: 1rem 7%;                   /* Space inside header */
+  display: flex;                      /* Use flexbox for layout */
+  align-items: center;                /* Center items vertically */
+  justify-content: space-between;     /* Space items evenly */
+  z-index: 1000;                      /* Keep header above other content */
+  box-shadow: var(--box-shadow);      /* Add shadow below header */
+}
+
+/* Logo styling in header */
+header .logo {
+  color: var(--light-color);         /* Dark gray text color */
+  font-size: 3rem;                   /* Large text size */
+  font-weight: bolder;               /* Extra bold text */
+}
+
+/* Logo image styling */
+header .logo img {
+  width: 3rem;                       /* Logo image size */
+  filter: brightness(0);             /* Make image black */
+  background: none;                  /* Remove background */
+}
+
+/* Navigation menu styling */
+header .navbar {
+  display: flex;                      /* Use flexbox for layout */
+  align-items: center;                /* Center items vertically */
+  justify-content: center;            /* Center items horizontally */
+}
+
+/* Navigation links styling */
+header .navbar a {
+  border-radius: 3rem;                /* Rounded corners */
+  padding: 2rem 1.5rem;               /* Space around links */
+  color: var(--light-color);          /* Dark gray text color */
+  transition: all 0.3s ease;          /* Smooth transition */
+}
+
+/* Navigation link hover effect */
+header .navbar a:hover {
+  color: #fff;                        /* White text on hover */
+  background: var(--wine);            /* Red background on hover */
+}
+
+/* Active state for navigation links */
+header .navbar a.active {
+  background: var(--wine);            /* Red background */
+  color: #fff;                        /* White text */
+}
+
+/* Remove hover effect when link is active */
+header .navbar a.active:hover {
+  background: var(--wine);            /* Keep red background */
+  color: #fff;                        /* Keep white text */
+}
+
+/* Header icons styling */
+header .icons img {
+  cursor: pointer;                   /* Show hand cursor on hover */
+  margin-left: 2.5rem;               /* Space between icons */
+  filter: brightness(0);             /* Make icons black */
+  background: none;                  /* Remove background */
+}
+
+/* Header icon hover effect */
+header .icons img:hover {
+  transform: rotate(50deg);          /* Rotate icon on hover */
+}
+
+/* Mobile menu icon visibility */
+header .icons #bars {
+  display: none;                      /* Hide menu icon by default */
+}
+
+/* Search form overlay */
+#search-form {
+  position: fixed;                    /* Fix position */
+  top: -110%;                        /* Hide above screen */
+  left: 0;                           /* Full width */
+  height: 100%;                      /* Full height */
+  width: 100%;                       /* Full width */
+  z-index: 1004;                     /* Keep above other content */
+  background: rgba(0, 0, 0, .8);     /* Semi-transparent black */
+  display: flex;                     /* Use flexbox for layout */
+  align-items: center;               /* Center vertically */
+  justify-content: center;           /* Center horizontally */
+  padding: 0 1rem;                   /* Space on sides */
+}
+
+/* Search form active state */
+#search-form.active {
+  top: 0;                            /* Show search form */
+}
+
+/* Search box input field */
+#search-form #search-box {
+  width: 50rem;                      /* Search box width */
+  border-bottom: 0.1rem solid #fff;  /* White bottom border */
+  padding: 1rem 0;                   /* Space above and below */
+  color: #fff;                       /* White text */
+  font-size: 3rem;                   /* Text size */
+  text-transform: none;              /* Keep text as typed */
+  background: none;                  /* No background */
+}
+
+/* Search box placeholder text */
+#search-form #search-box::placeholder {
+  color: #fff;                       /* White placeholder text */
+}
+
+/* Remove default search cancel button */
+#search-form #search-box::-webkit-search-cancel-button {
+  -webkit-appearance: none;          /* Hide default cancel button */
+}
+
+/* Search form labels */
+#search-form label {
+  color: #fff;                       /* White text */
+  cursor: pointer;                   /* Show hand cursor */
+  font-size: 1.5rem;                 /* Text size */
+}
+
+/* Search form label hover effect */
+#search-form label:hover {
+  color: var(--wine);                /* Red on hover */
+}
+
+/* Search icon styling */
+.search-icon {
+  filter: brightness(0);             /* Make icon black */
+  background: none;                  /* No background */
+}
+
+/* Close button styling */
+.close {
+  filter: brightness(0);             /* Make icon black */
+  background: none;                  /* No background */
+}
+
+/* Close button in search form */
+#search-form .close {
+  position: absolute;                /* Position relative to form */
+  cursor: pointer;                   /* Show hand cursor */
+  top: 2rem;                         /* Distance from top */
+  right: 3rem;                       /* Distance from right */
+  font-size: 5rem;                   /* Icon size */
+}
+
+/* Home page slider section */
+.home .home-slider {
+  position: relative;                 /* For positioning dots */
+  overflow: hidden;                   /* Hide overflow content */
+}
+
+/* Slider wrapper for smooth transitions */
+.home .home-slider .wrapper {
+  display: flex;                      /* Use flexbox for layout */
+  transition: transform 0.5s ease;    /* Smooth slide animation */
+}
+
+/* Individual slide styling */
+.home .home-slider .slide {
+  min-width: 100%;                    /* Full width slides */
+  display: flex;                      /* Use flexbox for layout */
+  align-items: center;                /* Center items vertically */
+  justify-content: space-between;     /* Space items evenly */
+  gap: 2rem;                          /* Space between content and image */
+  padding-top: 10rem;                 /* Space below header */
+}
+
+/* Slider content layout */
+.home .home-slider .slide .content {
+  flex: 1;                            /* Take up available space */
+}
+
+/* Slider text content styling */
+.home .home-slider .slide .content span {
+  color: var(--light-color);          /* Light gray text */
+  font-size: 2.5rem;                  /* Text size */
+}
+
+/* Slider heading styling */
+.home .home-slider .slide .content h3 {
+  color: var(--wine);                 /* Red text */
+  font-size: 4rem;                    /* Large text size */
+}
+
+/* Slider paragraph styling */
+.home .home-slider .slide .content p {
+  color: var(--wine);                /* Wine color text */
+  font-size: 1.5rem;                 /* Text size */
+  padding: 1rem 0;                   /* Space above and below */
+  line-height: 1.5;                  /* Space between lines */
+}
+
+/* Slider image container */
+.home .home-slider .slide .image {
+  flex: 1;                            /* Take up available space */
+}
+
+/* Slider image styling */
+.home .home-slider .slide .image img {
+  width: 100%;                        /* Full width */
+  max-width: 600px;                   /* Maximum width */
+  height: 400px;                      /* Fixed height */
+  object-fit: cover;                  /* Cover area without stretching */
+}
+
+/* Slider navigation dots container */
+.slider-nav {
+  position: absolute;                 /* Position relative to slider */
+  bottom: 2rem;                       /* Distance from bottom */
+  left: 50%;                          /* Center horizontally */
+  transform: translateX(-50%);        /* Perfect centering */
+  display: flex;                      /* Use flexbox for layout */
+  gap: 1rem;                          /* Space between dots */
+}
+
+/* Slider navigation dot styling */
+.slider-nav button {
+  width: 1.2rem;                      /* Dot width */
+  height: 1.2rem;                     /* Dot height */
+  border-radius: 50%;                 /* Make dots circular */
+  background: var(--beige);           /* Beige background */
+  cursor: pointer;                    /* Show hand cursor */
+  border: none;                       /* Remove border */
+}
+
+/* Active slider dot styling */
+.slider-nav button.active {
+  background: var(--wine);            /* Red for active dot */
+}
+
+/* Dishes section grid layout */
+.dishes .box-container {
+  display: grid;                     /* Use grid layout */
+  grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
+  gap: 2rem;                         /* Space between boxes */
+  padding: 0 2rem;                   /* Space on sides */
+  max-width: 1400px;                 /* Maximum width */
+  margin: 0 auto;                    /* Center the grid */
+}
+
+/* Individual dish box styling */
+.dishes .box-container .box {
+  background: var(--beige);          /* Beige background */
+  padding: 1rem;                     /* Space inside */
+  box-shadow: var(--box-shadow);     /* Add shadow */
+  text-align: center;                /* Center content */
+  position: relative;                /* For positioning heart icon */
+  overflow: hidden;                  /* Hide overflow */
+  border: 0.2rem solid var(--wine);  /* Red border */
+  border-radius: 1rem;               /* Rounded corners */
+  transition: transform 0.3s ease;   /* Smooth hover effect */
+}
+
+/* Dish box hover effect */
+.dishes .box-container .box:hover {
+  transform: translateY(-5px);       /* Lift box slightly on hover */
+}
+
+/* Heart icon in dish box */
+.dishes .box-container .box .heart {
+  position: absolute;                /* Position relative to box */
+  top: 1.5rem;                       /* Distance from top */
+  right: 1.5rem;                     /* Distance from right */
+  font-size: 2rem;                   /* Icon size */
+  background: none;                  /* No background */
+  z-index: 2;                        /* Keep above other elements */
+}
+
+/* Heart icon image styling */
+.dishes .box-container .box .heart img {
+  width: 2rem;                       /* Icon width */
+  height: 2rem;                      /* Icon height */
+  background: none;                  /* No background */
+  filter: brightness(0);             /* Make icon black */
+  transition: transform 0.3s ease;   /* Smooth hover effect */
+}
+
+/* Heart icon hover effect */
+.dishes .box-container .box .heart:hover img {
+  transform: scale(1.2);             /* Enlarge icon on hover */
+}
+
+/* Dish images styling */
+.dishes .box-container .box img {
+  width: 100%;                       /* Full width */
+  height: 200px;                     /* Fixed height */
+  object-fit: cover;                 /* Cover area without stretching */
+  border-radius: 0.5rem;             /* Rounded corners */
+  margin-bottom: 1rem;               /* Space below image */
+}
+
+/* Dish title styling */
+.dishes .box-container .box h3 {
+  color: var(--wine);                /* Red text */
+  font-size: 2.2rem;                 /* Text size */
+  padding: 1rem 0;                   /* Space above and below */
+  background: none;                  /* No background */
+  margin-bottom: 0.5rem;             /* Space below title */
+}
+
+/* Rating stars container */
+.dishes .box-container .box .stars {
+  padding: 0.5rem 0;                 /* Space above and below */
+  background: none;                  /* No background */
+  display: flex;                     /* Use flexbox for layout */
+  align-items: center;               /* Center vertically */
+  justify-content: center;           /* Center horizontally */
+  gap: 0.5rem;                       /* Space between stars */
+  margin-bottom: 0.5rem;             /* Space below stars */
+}
+
+/* Individual star images */
+.dishes .box-container .box .stars img {
+  width: 1.7rem;                     /* Star size */
+  height: 1.7rem;                    /* Star size */
+  background: none;                  /* No background */
+  filter: brightness(0);             /* Make stars black */
+}
+
+/* Price display styling */
+.dishes .box-container .box span {
+  color: var(--wine);                /* Red text */
+  font-size: 2.5rem;                 /* Text size */
+  font-weight: bold;                 /* Bold text */
+  background: none;                  /* No background */
+  display: block;                    /* Block display */
+  margin: 1rem 0;                    /* Space above and below */
+}
+
+/* Add to Cart button in dish box */
+.dishes .box-container .box .btn {
+  width: 100%;                       /* Full width */
+  margin-top: 1rem;                  /* Space above button */
+  background: var(--wine);           /* Red background */
+  color: #fff;                       /* White text */
+  padding: 1rem;                     /* Space inside button */
+  border-radius: 0.5rem;             /* Rounded corners */
+  transition: all 0.3s ease;         /* Smooth hover effect */
+}
+
+/* Add to Cart button hover effect */
+.dishes .box-container .box .btn:hover {
+  background: var(--beige);          /* Beige background on hover */
+  color: var(--wine);                /* Red text on hover */
+  transform: translateY(-2px);       /* Lift button slightly */
+}
+
+/* Section sub-heading styling */
+.sub-heading {
+  text-align: center;                /* Center text */
+  color: var(--light-color) !important; /* Dark gray text */
+  font-size: 2.2rem;                 /* Slightly larger text */
+  padding-top: 2rem;                 /* More space above */
+  margin-bottom: 1.5rem;             /* More space below */
+  display: block !important;         /* Force block display */
+  position: relative;                /* Ensure proper stacking */
+  z-index: 2;                        /* Keep above background */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  background: none !important;       /* Remove any background */
+  opacity: 1 !important;             /* Ensure full opacity */
+}
+
+/* Section main heading styling */
+.heading {
+  text-align: center;                /* Center text */
+  color: var(--wine);                /* Red text */
+  font-size: 3rem;                   /* Text size */
+  padding-bottom: 2rem;              /* Space below */
+  position: relative;                /* Ensure proper stacking */
+  z-index: 1;                        /* Keep above background */
+}
+
+/* Order section styling */
+.order {
+  background-color: var(--black);    /* Dark background */
+  padding: 4rem 7%;                  /* Space around section */
+}
+
+/* Order form styling */
+.order form {
+  max-width: 90rem;                  /* Maximum width */
+  margin: 0 auto;                    /* Center form */
+  padding: 2rem;                     /* Space inside form */
+  background: var(--beige);          /* Beige background */
+  border-radius: 1rem;               /* Rounded corners */
+  box-shadow: var(--box-shadow);     /* Add shadow */
+}
+
+/* Order form input boxes layout */
+.order form .input-box {
+  display: flex;                     /* Use flexbox for layout */
+  flex-wrap: wrap;                   /* Allow wrapping on small screens */
+  gap: 2rem;                         /* Space between inputs */
+  margin-bottom: 2rem;               /* Space below input group */
+}
+
+/* Order form input fields */
+.order form .input-box .input {
+  flex: 1 1 41rem;                   /* Flexible width with minimum */
+}
+
+/* Order form labels */
+.order form .input-box .input span {
+  display: block;                    /* Block display */
+  padding-bottom: 0.5rem;            /* Space below label */
+  font-size: 1.8rem;                 /* Label text size */
+  color: var(--wine);                /* Red text */
+}
+
+/* Order form input and textarea styling */
+.order form .input-box .input input,
+.order form .input-box .input textarea {
+  width: 100%;                       /* Full width */
+  padding: 1rem;                     /* Space inside */
+  font-size: 1.6rem;                 /* Text size */
+  color: var(--black);               /* Black text */
+  text-transform: none;              /* Keep text as typed */
+  border: 0.1rem solid var(--wine);  /* Red border */
+  border-radius: 0.5rem;             /* Rounded corners */
+  margin-bottom: 1rem;               /* Space below input */
+}
+
+/* Order form textarea specific styling */
+.order form .input-box .input textarea {
+  height: 15rem;                     /* Fixed height */
+  resize: none;                      /* Prevent resizing */
+}
+
+/* Order form submit button */
+.order form .btn {
+  width: 100%;                       /* Full width */
+  margin-top: 2rem;                  /* Space above button */
+  background: var(--wine);           /* Red background */
+  color: #fff;                       /* White text */
+  font-size: 1.8rem;                 /* Text size */
+  padding: 1.5rem;                   /* Space inside button */
+  border-radius: 0.5rem;             /* Rounded corners */
+  cursor: pointer;                   /* Show hand cursor */
+  transition: all 0.3s ease;         /* Smooth hover effect */
+}
+
+/* Order form submit button hover effect */
+.order form .btn:hover {
+  background: var(--beige);          /* Beige background on hover */
+  color: var(--wine);                /* Red text on hover */
+  transform: translateY(-2px);       /* Lift button slightly */
+}
+
+/* Footer section styling */
+.footer {
+  background-color: var(--black);    /* Dark background */
+  padding: 4rem 7%;                  /* Space around footer */
+  text-align: center;                /* Center text */
+}
+
+/* Footer grid layout */
+.footer .box-container {
+  display: grid;                     /* Use grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); /* Responsive columns */
+  gap: 2rem;                         /* Space between boxes */
+  margin-bottom: 3rem;               /* Space below grid */
+}
+
+/* Footer box headings */
+.footer .box-container .box h3 {
+  font-size: 2.2rem;                 /* Text size */
+  color: var(--wine);                /* Red text */
+  padding: 1rem 0;                   /* Space above and below */
+  margin-bottom: 1rem;               /* Space below heading */
+}
+
+/* Footer links styling */
+.footer .box-container .box a {
+  display: block;                    /* Block display */
+  font-size: 1.6rem;                 /* Text size */
+  color: var(--wine);                /* Wine color text */
+  padding: 0.5rem 0;                 /* Space above and below */
+  text-decoration: none;             /* Remove underline */
+  transition: all 0.3s ease;         /* Smooth hover effect */
+}
+
+/* Footer links hover effect */
+.footer .box-container .box a:hover {
+  color: var(--light-color);         /* Dark gray text on hover */
+  transform: translateX(5px);        /* Move right on hover */
+}
+
+/* Footer paragraphs styling */
+.footer .box-container .box p {
+  font-size: 1.6rem;                 /* Text size */
+  color: var(--wine);                /* Wine color text */
+  padding: 0.5rem 0;                 /* Space above and below */
+  line-height: 1.5;                  /* Space between lines */
+}
+
+/* Footer copyright text */
+.footer .credit {
+  font-size: 1.6rem;                 /* Text size */
+  color: var(--wine);                /* Wine color text */
+  padding: 1rem 0;                   /* Space above and below */
+  border-top: 0.1rem solid rgba(139, 0, 0, 0.1); /* Wine colored border */
+}
+
+/* Footer copyright highlight */
+.footer .credit span {
+  color: var(--light-color);         /* Dark gray text */
+  font-weight: bold;                 /* Bold text */
+}
+
+/* Author credit styling */
+.author-credit {
+  background-color: var(--black);    /* Light background */
+  padding: 1rem 7%;                  /* Space around credit */
+  text-align: center;                /* Center text */
+  font-size: 1.4rem;                 /* Text size */
+  color: var(--wine);                /* Wine color text */
+  border-top: 0.1rem solid rgba(139, 0, 0, 0.1); /* Wine colored border */
+}
+
+/* Author credit heart icon */
+.author-credit .heart {
+  color: var(--light-color);         /* Dark gray color */
+  animation: heartbeat 1.5s infinite; /* Continuous heartbeat animation */
+}
+
+/* Author credit name */
+.author-credit .author {
+  color: var(--light-color);         /* Dark gray text */
+  font-weight: bold;                 /* Bold text */
+}
+
+/* Heartbeat animation keyframes */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);             /* Normal size */
+  }
+  50% {
+    transform: scale(1.2);           /* Enlarged size */
+  }
+  100% {
+    transform: scale(1);             /* Back to normal size */
+  }
+}
+
+/* Responsive design for tablets */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;                  /* Smaller text size */
+  }
+  header {
+    padding: 1rem 2rem;              /* Less padding */
+  }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  header .icons #bars {
+    display: inline-block;           /* Show menu icon */
+  }
+  
+  header .navbar {
+    position: absolute;              /* Position below header */
+    top: 100%;                       /* Below header */
+    left: 0;                         /* Full width */
+    right: 0;                        /* Full width */
+    background: var(--black);        /* Dark background */
+    border-top: 1rem solid rgba(0, 0, 0, .2);    /* Top border */
+    border-bottom: 1rem solid rgba(0, 0, 0, .2); /* Bottom border */
+    padding: 1rem;                   /* Space inside */
+    clip-path: polygon(0 0, 100% 0, 0 0);        /* Hide menu by default */
+    transition: all 0.3s ease;       /* Smooth animation */
+    flex-direction: column;          /* Stack items vertically */
+  }
+  
+  header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Show menu */
+  }
+  
+  header .navbar a {
+    display: block;                  /* Full width links */
+    padding: 1.5rem;                 /* Space around links */
+    margin: 1rem;                    /* Space between links */
+    font-size: 2rem;                 /* Text size */
+    background: lightgray;           /* Light background */
+    color: #000;                     /* Black text */
+    text-align: center;              /* Center text */
+  }
+
+  .dishes .box-container {
+    grid-template-columns: 1fr;      /* 1 column on mobile */
+  }
+
+  .footer .box-container {
+    grid-template-columns: 1fr;      /* 1 column on mobile */
+    text-align: center;              /* Center text */
+  }
+  
+  .footer .box-container .box a:hover {
+    transform: none;                 /* Remove hover effect */
+  }
+
+  .order form .input-box {
+    flex-direction: column;          /* Stack inputs vertically */
+  }
+  
+  .order form .input-box .input {
+    flex: 1 1 100%;                  /* Full width inputs */
+  }
+
+  section {
+    width: 100%;                       /* Full width */
+    overflow-x: hidden;                /* Hide horizontal scrollbar */
+    padding: 2rem 1rem;                /* Reduced padding */
+  }
+
+  .home .home-slider .slide {
+    width: 100%;                       /* Full width */
+    overflow-x: hidden;                /* Hide horizontal scrollbar */
+  }
+
+  .home .home-slider .slide .image img {
+    max-width: 100%;                   /* Prevent image overflow */
+    height: auto;                      /* Maintain aspect ratio */
+  }
+
+  .dishes .box-container {
+    width: 100%;                       /* Full width */
+    overflow-x: hidden;                /* Hide horizontal scrollbar */
+    padding: 0 1rem;                   /* Reduced padding */
+  }
+
+  .order form {
+    width: 100%;                       /* Full width */
+    overflow-x: hidden;                /* Hide horizontal scrollbar */
+    padding: 1rem;                     /* Reduced padding */
+  }
+
+  .footer {
+    width: 100%;                       /* Full width */
+    overflow-x: hidden;                /* Hide horizontal scrollbar */
+    padding: 2rem 1rem;                /* Reduced padding */
+  }
+}
